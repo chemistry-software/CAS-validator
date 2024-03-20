@@ -14,12 +14,19 @@
 
 int validateCas(char *casNumber);
 
-int main()
+int main(int argc, char *argv[])
 {
-
-    printf("Enter a CAS number: ");
     char casNumber[15] = {0};
-    scanf("%s", casNumber);
+
+    if (argc > 1)
+    {
+        strncpy(casNumber, argv[1], sizeof(casNumber) - 1);
+    }
+    else
+    {
+        printf("Enter a CAS number: \n");
+        scanf("%s", casNumber);
+    }
 
     printf("The CAS number is: %s\nCheck-digit: %d\n", casNumber, casNumber[strlen(casNumber) - 1] - '0');
 
